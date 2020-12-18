@@ -9,8 +9,7 @@ function List() {
 
   const fetchData = async () => {
     const response = await fetch(
-      "https://rickandmortyapi.com/api/character/?page=2"
-    );
+      "https://rickandmortyapi.com/api/character/?page=1");
     const data = await response.json();
     // const item = data.results;
     console.log("data :>> ", data);
@@ -43,6 +42,6 @@ function List() {
                 <li></li> */}
     </div>
   );
+  
 }
-
 export default List;

@@ -1,10 +1,10 @@
 import "./App.css";
 import Greet from "./components/Greet";
 import HookCounter from "./components/HookCounter";
-import Welcome from "./components/Welcome";
+// import Welcome from "./components/Welcome";
 import List from "./components/List"
 import ListItem from './components/ListItem'
-import {useState} from 'react'
+
 
 
 function App() {
