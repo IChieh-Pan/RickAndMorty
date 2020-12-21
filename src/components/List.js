@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ListItem from "./ListItem"
 
 function List() {
   const [data, setData] = useState({});
@@ -20,21 +21,21 @@ function List() {
     const characters = item[1];
     console.log("characters :>> ", characters);
     setCharacters(characters);
-  };
-
+  }
 
   return (
     <div>
       <ul className="grid">
        {characters && characters.map((characters) => {
           const { id, name , image} = characters;
-          return (
-            <li key={id} className="card">
+         return (      
+           <ListItem key={characters.id} ></ListItem>
+           /*  <li key={id} className="card">
               <a href="#">
                 <img src={image} alt={`${name} Picture`} /> 
                 <h3>{name}</h3>
               </a>
-            </li>
+            </li> */
           );
         })}
       </ul>

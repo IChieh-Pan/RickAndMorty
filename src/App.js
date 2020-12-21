@@ -13,8 +13,7 @@ function App() {
      
       <Greet name="C" assName="Cat" />
       <HookCounter></HookCounter>
-    <ListItem item={{text: "hello"}} />
-      
+      <ListItem characters={}></ListItem>
       <List></List>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
