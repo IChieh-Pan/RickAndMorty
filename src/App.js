@@ -3,7 +3,7 @@ import Greet from "./components/Greet";
 import HookCounter from "./components/HookCounter";
 // import Welcome from "./components/Welcome";
 import List from "./components/List"
-import ListItem from './components/ListItem'
+
 
 
 
@@ -13,7 +13,7 @@ function App() {
      
       <Greet name="C" assName="Cat" />
       <HookCounter></HookCounter>
-      <ListItem characters={}></ListItem>
+      
       <List></List>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

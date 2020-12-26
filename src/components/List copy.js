@@ -11,7 +11,7 @@ function List() {
 
   const fetchData = async () => {
     const response = await fetch(
-      "https://rickandmortyapi.com/api/character/?page=2");
+      "https://rickandmortyapi.com/api/character/?page=1");
     const data = await response.json();
     // const item = data.results;
     console.log("data :>> ", data);
@@ -23,16 +23,27 @@ function List() {
     setCharacters(characters);
   }
 
-
   return (
     <div>
       <ul>
-        {characters && characters.map((characters) => {
-          const { id, name, image } = characters;
-          return (
-            <ListItem key={characters.id} imagttt={characters.image} name={characters.name} />)
+       {characters && characters.map((characters) => {
+          const { id, name , image} = characters;
+         return (      
+           <ListItem key={characters.id} img={characters.imge} name={characters.name}></ListItem>
+           /*  <li key={id} className="card">
+              <a href="#">
+                <img src={image} alt={`${name} Picture`} /> 
+                <h3>{name}</h3>
+              </a>
+            </li> */
+          );
         })}
       </ul>
+
+      {/* {data.map((data) => console.log(data))} */}
+      {/*        characters.map((item, index) => {
+           return (<ul>
+                <li></li> */}
     </div>
   );
   

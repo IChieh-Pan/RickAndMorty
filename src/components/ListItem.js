@@ -1,22 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-function ListItem(characters) {
-    const styleDiv = {
-        backgroundColor: 'grey',
-        fontSize: 14
-}
-
-
+function ListItem(props) {
+   
+    const styledDiv = {
+        backgroundColor: 'lightBlue',
+        fontSize: 22,
+        // font-family: Roboto
+   }
+    
     return (
-      <div style={styleDiv} key={characters.id}>
-        <li className="card">
+      <div style={styledDiv}>
+        <li key={props.id} className="card">
           <a href="#">
-            <img src={image} alt={`${name} Picture`} />
-            <h3>{name}</h3>
+            <img src={props.imagttt} alt={`${props.name} Picture`} />
+            <h3>{props.name}</h3>
           </a>
         </li>
       </div>
     );
 }
 
+ 
 export default ListItem
