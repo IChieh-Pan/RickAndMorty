@@ -3,9 +3,9 @@ import React, {useState} from 'react'
 function ListItem(props) {
    
     const styledDiv = {
-        backgroundColor: 'lightBlue',
+        backgroundColor: 'lightGrey',
         fontSize: 22,
-        // font-family: Roboto
+        
    }
     
     return (
