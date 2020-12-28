@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import ListItem from "./ListItem";
 import { Container, Card, Row, Col }from "react-bootstrap";
-import ModalDialog from "./ModalDialog";
+
 
 
 
 function List() {
   const [data, setData] = useState({});
   const [characters, setCharacters] = useState([]);
-  const [showMore, setShowMore] = useState(false);
+  // const [showMore, setShowMore] = useState(false);
 
   
   useEffect(() => {
@@ -29,29 +29,21 @@ function List() {
       setCharacters(characters);
     }
     
-    
-    const showModal = () => {
-      setShowMore(true);
-  
-      setTimeout(() => {
-        setShowMore(false)
-      }, 3000)
-    };
-    
   return (
     <Container>
-     
       <Row>
         {characters && characters.map((characters) => {
-          const { id, name, image, origin } = characters;
+          const { id, name, image, origin, status, species, gender } = characters;
           return (
             <Col md={4} className="mb-5">
               <ListItem
                 key={characters.id}
-                imagttt={characters.image}
+                imagt={characters.image}
                 name={characters.name}
                 origin={characters.origin}
-                setShowMore={showModal}
+                gender={characters.gender}
+                species={characters.species}
+                status={characters.status}
               />
             </Col>
           );})}

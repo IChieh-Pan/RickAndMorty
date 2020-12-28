@@ -6,12 +6,10 @@ import HookCounter from "./components/HookCounter";
 import List from "./components/List";
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
-import React, {useState} from "react"
 
 
 function App() {
-
-  const [data, showMore] = useState(false);
+;
   
   
 
