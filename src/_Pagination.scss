@@ -1,0 +1,33 @@
+.arrowContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color:#338588;
+  color:#ffffff;
+  text-decoration: none;
+}
+
+.previous {
+  border-radius: 5px;
+ border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+  color:#338588;
+}
+
+.next {
+ border-radius: 5px;
+ border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+  color: #338588;
+}

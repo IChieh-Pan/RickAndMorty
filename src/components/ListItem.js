@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../_List.scss";
 
 import {
   Container,
@@ -40,7 +41,7 @@ function ListItem(props) {
             Orgin: {props.origin.name}
           </Card.Text>
           <Button
-            variant="outline-secondary"
+            variant="outline-info"
             onClick={handleShow}
             className="mt-auto font-weight-bold"
             block
@@ -53,20 +54,29 @@ function ListItem(props) {
       {/* <ModalDialog show={show} setShow={setShow} /> */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{props.name}</Modal.Title>
+          <Modal.Title className="ml-3">{props.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Image src={props.imagt} roundedCircle></Image>
-          <ListGroup variant="flush">
-            <ListGroup.Item>Species: {props.species}</ListGroup.Item>
-            <ListGroup.Item> Gender: {props.gender}</ListGroup.Item>
-            <ListGroup.Item>Status: {props.status}</ListGroup.Item>
+          <div className="d-block text-center">
+            <Image src={props.imagt} roundedCircle></Image>
+          </div>
+          <ListGroup className="mt-4 mr-5 ml-5">
+            <ListGroup.Item variant="none">
+              Species: {props.species}
+            </ListGroup.Item>
+            <ListGroup.Item variant="none">
+              {" "}
+              Gender: {props.gender}
+            </ListGroup.Item>
+            <ListGroup.Item variant="none">
+              Status: {props.status}
+            </ListGroup.Item>
           </ListGroup>
         </Modal.Body>
         <Modal.Footer>
-          {/* <Button variant="danger" onClick={handleClose}>
+          <Button variant="light" onClick={handleClose}>
             Close
-          </Button> */}
+          </Button>
         </Modal.Footer>
       </Modal>
     </Container>
