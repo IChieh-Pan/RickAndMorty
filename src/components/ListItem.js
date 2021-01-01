@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../_List.scss";
+import "./_List.scss";
 
 import {
   Container,

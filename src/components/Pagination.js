@@ -4,7 +4,7 @@ import "../_Pagination.scss";
 function Pagination() {
   return (
     <div>
-      <div className="arrowContainer">
+      <div className="arrowContainer" onClick={() => setPage(page + 1)}>
         <a href="#" class="previous">
           &#8249; &nbsp; Previous
         </a>

@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from "react";
 import ListItem from "./ListItem";
 import { Container, Card, Row, Col, Pagination } from "react-bootstrap";
-import '../_List.scss'
-  
-  
-  
-  
-function List() {
+import "./_List.scss";
+// import Pagination from "./Pagination";
+
+function List(paginate) {
   const [data, setData] = useState({});
   const [characters, setCharacters] = useState([]);
-  // const [showMore, setShowMore] = useState(false);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [page]);
+
+  const nextPage = (page) => {
+    let setPage = page + 1;
+  };
 
   const fetchData = async () => {
     const response = await fetch(
-      "https://rickandmortyapi.com/api/character/?page=2"
+      `https://rickandmortyapi.com/api/character/?page=${setPage}`
     );
     const data = await response.json();
     // const item = data.results;
@@ -59,15 +61,23 @@ function List() {
             );
           })}
       </Row>
+
       <div>
-        <Pagination class="d-flex justify-content-between">
-          <div>
-            {/* <Pagination.Prev onClick={e => prevPage(e.target.value)}></Pagination.Prev> */}
-          </div>
-          <div>
-            <Pagination.Next />
-          </div>
-        </Pagination>
+        <div>
+          <a
+            href="#"
+            class="previous"
+            onClick={() => {
+              setPage(page + 1);
+              paginate(page + 1);
+            }}
+          >
+            &#8249; &nbsp; Previous
+          </a>
+          <a href="#" class="next">
+            Next &nbsp; &#8250;
+          </a>
+        </div>
       </div>
     </Container>
   );
