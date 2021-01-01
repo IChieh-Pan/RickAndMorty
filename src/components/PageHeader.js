@@ -9,10 +9,17 @@ import Button from "react-bootstrap/Button";
 
 function PageHeader() {
   return (
-    <div className=""className="mt-5 mb-5">
-      <div className="d-flex justify-content-center align-items-baseline">
-        <img src={rick_and_morty_logo} alt="logo" width="350" />
-        <img className="ml-3" src={mortysmith} alt="logo" height="90" />
+    <div className="" className="mt-5 mb-5">
+      <div className="d-flex justify-content-center align-items-baseline disply">
+        <div className="d-inline-block">
+          <img src={rick_and_morty_logo} alt="logo" width="350" />
+          <img className="ml-3" src={mortysmith} alt="logo" height="90" />
+        </div>
+        <div className="d-inline-block">
+          <div className="subTitle">
+            100 totally useless facts about Rick & Morty!
+          </div>
+        </div>
       </div>
       <Navbar className="bg-light justify-content-end">
         <Form inline>
@@ -20,10 +27,7 @@ function PageHeader() {
           <Button type="submit">Submit</Button>
         </Form>
       </Navbar>
-      {/* <h1 className="mb-3">Rick and Morty Archive</h1> */}
-      <div className="imgContainer">
-        <h5>100 totally useless facts about Rick & Morty!</h5>
-      </div>
+      <div className="imgContainer"></div>
     </div>
   );
 }
