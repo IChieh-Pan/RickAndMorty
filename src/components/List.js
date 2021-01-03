@@ -4,22 +4,24 @@ import { Container, Card, Row, Col, Pagination } from "react-bootstrap";
 import "./_List.scss";
 // import Pagination from "./Pagination";
 
-function List(paginate) {
+function List() {
   const [data, setData] = useState({});
   const [characters, setCharacters] = useState([]);
+  const [info, setInfo] = useState({});
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     fetchData();
   }, [page]);
 
-  const nextPage = (page) => {
+  /*   const nextPage = () => {
     let setPage = page + 1;
-  };
+    nextPage(setPage);
+  }; */
 
   const fetchData = async () => {
     const response = await fetch(
-      `https://rickandmortyapi.com/api/character/?page=${setPage}`
+      `https://rickandmortyapi.com/api/character/?page=${page}`
     );
     const data = await response.json();
     // const item = data.results;
@@ -28,8 +30,28 @@ function List(paginate) {
     const item = Object.values(data);
     console.log("item :>> ", item);
     const characters = item[1];
+    const info = item[0];
     console.log("characters :>> ", characters);
     setCharacters(characters);
+    setInfo(info);
+  };
+
+  const nextHandler = (event) => {
+    event.preventDefault();
+    if (page <= info.pages) {
+      setPage(page + 1);
+    } else {
+      setPage(1);
+    }
+  };
+
+  const prevHandler = (event) => {
+    event.preventDefault();
+    if (page > 1) {
+      setPage(page - 1);
+    } else {
+      setPage(info.pages);
+    }
   };
 
   return (
@@ -64,17 +86,10 @@ function List(paginate) {
 
       <div>
         <div>
-          <a
-            href="#"
-            class="previous"
-            onClick={() => {
-              setPage(page + 1);
-              paginate(page + 1);
-            }}
-          >
+          <a href="#" class="previous" onClick={(e) => prevHandler(e)}>
             &#8249; &nbsp; Previous
           </a>
-          <a href="#" class="next">
+          <a href="#" class="next" onClick={(e) => nextHandler(e)}>
             Next &nbsp; &#8250;
           </a>
         </div>

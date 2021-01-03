@@ -8,6 +8,8 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
 function PageHeader() {
+
+  // const [search, setSearch] = useState("")
   return (
     <div className="" className="mt-5 mb-5">
       <div className="d-flex justify-content-center align-items-baseline disply">
@@ -24,7 +26,7 @@ function PageHeader() {
       <Navbar className="bg-light justify-content-end">
         <Form inline>
           <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-          <Button type="submit">Submit</Button>
+          {/* <Button type="submit">Submit</Button> */}
         </Form>
       </Navbar>
       <div className="imgContainer"></div>
