@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ListItem from "./ListItem";
-import { Container, Card, Row, Col, Pagination } from "react-bootstrap";
+import { Container, Card, Row, Col, Pagination, Button } from "react-bootstrap";
 import "./_List.scss";
 // import Pagination from "./Pagination";
 
@@ -31,31 +31,63 @@ function List() {
     console.log("item :>> ", item);
     const characters = item[1];
     const info = item[0];
+    console.log("itemxx", info);
     console.log("characters :>> ", characters);
     setCharacters(characters);
     setInfo(info);
   };
 
   const nextHandler = (event) => {
-    event.preventDefault();
-    if (page <= info.pages) {
+    // event.preventDefault();
+    if (page < info.pages) {
       setPage(page + 1);
+    } else {
+      setPage(page);
+    }
+  };
+
+  const prevHandler = (event) => {
+    // event.preventDefault();
+    if (page > 1) {
+      setPage(page - 1);
     } else {
       setPage(1);
     }
   };
 
-  const prevHandler = (event) => {
-    event.preventDefault();
-    if (page > 1) {
-      setPage(page - 1);
-    } else {
-      setPage(info.pages);
+  /*  const noPrevPage = () => {
+    if (setPage === 1) {
+      document.getElementById("prevBtn").disabled = true;
     }
-  };
+  }; */
 
   return (
     <Container>
+      <div className="d-flex justify-content-between mb-3">
+        <Button
+          variant="dark"
+          href="#"
+          class="previous"
+          id="prevBtn"
+          size="sm"
+          onClick={(e) => prevHandler(e)}
+          disabled={page === 1}
+        >
+          &#8249; &nbsp; Previous Page
+        </Button>
+        <Button
+          variant="dark"
+          href="#"
+          class="next"
+          id="nextBtn"
+          size="sm"
+          onClick={(e) => nextHandler(e)}
+          disabled={page === info.pages}
+        >
+          Next Page &nbsp; &#8250;
+        </Button>
+      </div>
+
       <Row>
         {characters &&
           characters.map((characters) => {
@@ -83,17 +115,6 @@ function List() {
             );
           })}
       </Row>
-
-      <div>
-        <div>
-          <a href="#" class="previous" onClick={(e) => prevHandler(e)}>
-            &#8249; &nbsp; Previous
-          </a>
-          <a href="#" class="next" onClick={(e) => nextHandler(e)}>
-            Next &nbsp; &#8250;
-          </a>
-        </div>
-      </div>
     </Container>
   );
 }
