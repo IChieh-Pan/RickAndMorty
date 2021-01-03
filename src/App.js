@@ -9,9 +9,8 @@ import "../src/App.scss";
 function App() {
   return (
     <Container>
-      <PageHeader />
+      {/* <PageHeader /> */}
       <List></List>
-      
     </Container>
   );
 }

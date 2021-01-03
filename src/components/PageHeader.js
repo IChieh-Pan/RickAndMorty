@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import mortysmith from "./mortysmith.png";
 import rick_and_morty_logo from "./rick_and_morty_logo.png";
 import "./_PageHeader.scss";
-import Navbar from "react-bootstrap/Navbar";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
+import { Navbar, Form, FormControl, Button } from "react-bootstrap";
 
 function PageHeader() {
-  // const [search, setSearch] = useState("")
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // const [value, setValue] = useState();
+  let onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log("searchTerm", searchTerm);
+    setSearchTerm();
+  };
+
   return (
     <div className="mt-4 mb-1">
       <div className="align-items-baseline d-block justify-content-between">
@@ -22,8 +27,16 @@ function PageHeader() {
       </div>
 
       <Navbar className="bg-light justify-content-end">
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
+        <Form onSubmit={onFormSubmit} inline>
+          <Form.Control
+            type="text"
+            placeholder="Search"
+            className=" mr-sm-2"
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+            value={searchTerm}
+          />
           <Button type="submit">Submit</Button>
         </Form>
       </Navbar>

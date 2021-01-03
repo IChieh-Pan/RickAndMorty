@@ -2,26 +2,23 @@ import React, { useState, useEffect } from "react";
 import ListItem from "./ListItem";
 import { Container, Card, Row, Col, Pagination, Button } from "react-bootstrap";
 import "./_List.scss";
-// import Pagination from "./Pagination";
+// import Pagination from "../components/Pagination";
+import PageHeader from "./PageHeader";
 
 function List() {
   const [data, setData] = useState({});
   const [characters, setCharacters] = useState([]);
   const [info, setInfo] = useState({});
   const [page, setPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetchData();
   }, [page]);
 
-  /*   const nextPage = () => {
-    let setPage = page + 1;
-    nextPage(setPage);
-  }; */
-
   const fetchData = async () => {
     const response = await fetch(
-      `https://rickandmortyapi.com/api/character/?page=${page}`
+      `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchTerm}`
     );
     const data = await response.json();
     // const item = data.results;
@@ -38,7 +35,7 @@ function List() {
   };
 
   const nextHandler = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     if (page < info.pages) {
       setPage(page + 1);
     } else {
@@ -47,7 +44,7 @@ function List() {
   };
 
   const prevHandler = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     if (page > 1) {
       setPage(page - 1);
     } else {
@@ -55,22 +52,16 @@ function List() {
     }
   };
 
-  /*  const noPrevPage = () => {
-    if (setPage === 1) {
-      document.getElementById("prevBtn").disabled = true;
-    }
-  }; */
-
   return (
     <Container>
+      <PageHeader searchTerm={searchTerm} />
       <div className="d-flex justify-content-between mb-3">
         <Button
           variant="dark"
           href="#"
           class="previous"
-          id="prevBtn"
           size="sm"
-          onClick={(e) => prevHandler(e)}
+          onClick={(event) => prevHandler(event)}
           disabled={page === 1}
         >
           &#8249; &nbsp; Previous Page
@@ -79,9 +70,8 @@ function List() {
           variant="dark"
           href="#"
           class="next"
-          id="nextBtn"
           size="sm"
-          onClick={(e) => nextHandler(e)}
+          onClick={(event) => nextHandler(event)}
           disabled={page === info.pages}
         >
           Next Page &nbsp; &#8250;
