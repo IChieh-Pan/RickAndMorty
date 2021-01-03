@@ -8,11 +8,11 @@ function PageHeader() {
   const [searchTerm, setSearchTerm] = useState("");
 
   // const [value, setValue] = useState();
-  let onFormSubmit = (e) => {
+  /*   let onFormSubmit = (e) => {
     e.preventDefault();
     console.log("searchTerm", searchTerm);
     setSearchTerm();
-  };
+  }; */
 
   return (
     <div className="mt-4 mb-1">
@@ -26,7 +26,7 @@ function PageHeader() {
         </div>
       </div>
 
-      <Navbar className="bg-light justify-content-end">
+      {/* <Navbar className="bg-light justify-content-end">
         <Form onSubmit={onFormSubmit} inline>
           <Form.Control
             type="text"
@@ -39,8 +39,7 @@ function PageHeader() {
           />
           <Button type="submit">Submit</Button>
         </Form>
-      </Navbar>
-      <div className="imgContainer"></div>
+      </Navbar> */}
     </div>
   );
 }

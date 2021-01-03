@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
 import ListItem from "./ListItem";
-import { Container, Card, Row, Col, Pagination, Button } from "react-bootstrap";
+import {
+  Container,
+  Card,
+  Row,
+  Col,
+  Pagination,
+  Button,
+  Form,
+  FormControl,
+  Navbar,
+} from "react-bootstrap";
+
 import "./_List.scss";
 // import Pagination from "../components/Pagination";
 import PageHeader from "./PageHeader";
@@ -14,7 +25,7 @@ function List() {
 
   useEffect(() => {
     fetchData();
-  }, [page]);
+  }, [page, searchTerm]);
 
   const fetchData = async () => {
     const response = await fetch(
@@ -32,6 +43,12 @@ function List() {
     console.log("characters :>> ", characters);
     setCharacters(characters);
     setInfo(info);
+  };
+
+  let onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log("searchTerm", searchTerm);
+    setSearchTerm();
   };
 
   const nextHandler = (event) => {
@@ -54,7 +71,21 @@ function List() {
 
   return (
     <Container>
-      <PageHeader searchTerm={searchTerm} />
+      <PageHeader />
+      <Navbar className="bg-light justify-content-end">
+        <Form onSubmit={onFormSubmit} inline>
+          <Form.Control
+            type="text"
+            placeholder="Search"
+            className=" mr-sm-2"
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+            value={searchTerm}
+          />
+          <Button type="submit">Submit</Button>
+        </Form>
+      </Navbar>
       <div className="d-flex justify-content-between mb-3">
         <Button
           variant="dark"
