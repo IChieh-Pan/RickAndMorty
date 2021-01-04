@@ -9,7 +9,6 @@ import "../src/App.scss";
 function App() {
   return (
     <Container>
-      {/* <PageHeader /> */}
       <List></List>
     </Container>
   );

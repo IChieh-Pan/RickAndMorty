@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
+// import "./_Pagination.scss";
 
 function Pagination() {
+  const nextHandler = (event) => {
+    event.preventDefault();
+    if (page < info.pages) {
+      setPage(page + 1);
+    } else {
+      setPage(page);
+    }
+  };
 
-const nextHandler = (event) => {
-  event.preventDefault();
-  if (page < info.pages) {
-    setPage(page + 1);
-  } else {
-    setPage(page);
-  }
-};
-
-const prevHandler = (event) => {
-  event.preventDefault();
-  if (page > 1) {
-    setPage(page - 1);
-  } else {
-    setPage(1);
-  }
-};
-  
+  const prevHandler = (event) => {
+    event.preventDefault();
+    if (page > 1) {
+      setPage(page - 1);
+    } else {
+      setPage(1);
+    }
+  };
 
   return (
     <div>

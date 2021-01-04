@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ListItem from "./ListItem";
+import PageHeader from "./PageHeader";
 import {
   Container,
   Card,
@@ -13,8 +14,7 @@ import {
 } from "react-bootstrap";
 
 import "./_List.scss";
-// import Pagination from "../components/Pagination";
-import PageHeader from "./PageHeader";
+import "./_Pagination.scss";
 
 function List() {
   const [data, setData] = useState({});
@@ -45,11 +45,13 @@ function List() {
     setInfo(info);
   };
 
-  let onFormSubmit = (e) => {
+  const onFormSubmit = (e) => {
     e.preventDefault();
     console.log("searchTerm", searchTerm);
     setSearchTerm();
   };
+
+  const input = ({ target: { searchTerm } }) => setSearchTerm(searchTerm);
 
   const nextHandler = (event) => {
     event.preventDefault();
@@ -72,20 +74,19 @@ function List() {
   return (
     <Container>
       <PageHeader />
-      <Navbar className="bg-light justify-content-end">
+      <Navbar className="bg-light justify-content-end mb-3">
         <Form onSubmit={onFormSubmit} inline>
           <Form.Control
             type="text"
             placeholder="Search"
             className=" mr-sm-2"
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-            }}
+            onChange={input}
             value={searchTerm}
           />
           <Button type="submit">Submit</Button>
         </Form>
       </Navbar>
+      
       <div className="d-flex justify-content-between mb-3">
         <Button
           variant="dark"

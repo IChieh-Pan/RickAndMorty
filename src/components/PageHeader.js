@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import mortysmith from "./mortysmith.png";
 import rick_and_morty_logo from "./rick_and_morty_logo.png";
-import "./_PageHeader.scss";
+// import "./_PageHeader.scss";
+import "./_Pagination.scss";
 import { Navbar, Form, FormControl, Button } from "react-bootstrap";
 
 function PageHeader() {
@@ -15,7 +16,7 @@ function PageHeader() {
   }; */
 
   return (
-    <div className="mt-4 mb-1">
+    <div className="mt-4 mb-3">
       <div className="align-items-baseline d-block justify-content-between">
         <img src={rick_and_morty_logo} alt="logo" width="350" />
         <img className="ml-3" src={mortysmith} alt="logo" height="90" />

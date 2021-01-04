@@ -31,3 +31,21 @@ a:hover {
   background-color: #ffffff;
   color: #338588;
 }
+
+
+
+
+.btn.disabled {
+    cursor: not-allowed !important;
+    opacity: 40% !important;
+    cursor: not-allowed !important;
+}
+
+.btn-dark {
+  background-color: #86d67c !important;
+    border: #86d76c 1px solid !important;
+}
+
+a.btn.disabled {
+  cursor: not-allowed !important;
+}
