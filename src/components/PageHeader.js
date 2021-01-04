@@ -5,8 +5,9 @@ import rick_and_morty_logo from "./rick_and_morty_logo.png";
 import "./_Pagination.scss";
 import { Navbar, Form, FormControl, Button } from "react-bootstrap";
 
-function PageHeader() {
-  const [searchTerm, setSearchTerm] = useState("");
+function PageHeader({ input, searchTerm, onFormSubmit }) {
+  
+  
 
   // const [value, setValue] = useState();
   /*   let onFormSubmit = (e) => {
@@ -27,20 +28,18 @@ function PageHeader() {
         </div>
       </div>
 
-      {/* <Navbar className="bg-light justify-content-end">
+      <Navbar className="bg-light justify-content-end">
         <Form onSubmit={onFormSubmit} inline>
           <Form.Control
             type="text"
             placeholder="Search"
             className=" mr-sm-2"
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-            }}
+            onChange={input}
             value={searchTerm}
           />
           <Button type="submit">Submit</Button>
         </Form>
-      </Navbar> */}
+      </Navbar>
     </div>
   );
 }

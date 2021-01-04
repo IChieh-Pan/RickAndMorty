@@ -25,7 +25,7 @@ function List() {
 
   useEffect(() => {
     fetchData();
-  }, [page, searchTerm]);
+  }, [page]);
 
   const fetchData = async () => {
     const response = await fetch(
@@ -47,11 +47,12 @@ function List() {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    console.log("searchTerm", searchTerm);
-    setSearchTerm();
+    // console.log("searchTerm", searchTerm);
+    // setSearchTerm();
+    fetchData();
   };
 
-  const input = ({ target: { searchTerm } }) => setSearchTerm(searchTerm);
+  const input = (event) => setSearchTerm(event.target.value);
 
   const nextHandler = (event) => {
     event.preventDefault();
@@ -73,20 +74,27 @@ function List() {
 
   return (
     <Container>
-      <PageHeader />
-      <Navbar className="bg-light justify-content-end mb-3">
+      <PageHeader
+        searchTerm={searchTerm}
+        input={input}
+        onFormSubmit={onFormSubmit}
+      />
+      {/* <Navbar className="bg-light justify-content-end mb-3">
         <Form onSubmit={onFormSubmit} inline>
           <Form.Control
             type="text"
             placeholder="Search"
             className=" mr-sm-2"
             onChange={input}
+             onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
             value={searchTerm}
           />
           <Button type="submit">Submit</Button>
         </Form>
-      </Navbar>
-      
+      </Navbar> */}
+
       <div className="d-flex justify-content-between mb-3">
         <Button
           variant="dark"
